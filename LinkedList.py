@@ -41,3 +41,9 @@ def reverse_iter(lst):
         else:
             newlst = cons(car(lst),newlst)
             lst = cdr(lst)
+
+def llist_from_list(pylist):
+    c = None
+    for el in pylist[::-1]:
+        c = cons(el,c)
+    return c
