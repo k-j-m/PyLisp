@@ -24,3 +24,20 @@ def _cdr_to_str(mycdr):
     else:
         return ' . ' + str(mycdr)
         
+def reverse(lst):
+    return reverse_aux(None,lst)
+
+def reverse_aux(preceding,lst):
+    if lst is None:
+        return preceding
+    else:
+        return reverse_aux(cons(car(lst),preceding),cdr(lst))
+
+def reverse_iter(lst):
+    newlst = None
+    while True:
+        if lst is None:
+            return newlst
+        else:
+            newlst = cons(car(lst),newlst)
+            lst = cdr(lst)
