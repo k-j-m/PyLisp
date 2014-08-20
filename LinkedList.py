@@ -24,7 +24,7 @@ def _cdr_to_str(mycdr):
     else:
         return ' . ' + str(mycdr)
         
-def reverse(lst):
+def reverse_recur(lst):
     return reverse_aux(None,lst)
 
 def reverse_aux(preceding,lst):
@@ -33,7 +33,7 @@ def reverse_aux(preceding,lst):
     else:
         return reverse_aux(cons(car(lst),preceding),cdr(lst))
 
-def reverse_iter(lst):
+def reverse(lst):
     newlst = None
     while True:
         if lst is None:
@@ -42,7 +42,20 @@ def reverse_iter(lst):
             newlst = cons(car(lst),newlst)
             lst = cdr(lst)
 
-def llist_from_list(pylist):
+def nreverse(lst):
+    newlst = None
+    
+    while True:
+        if lst is None:
+            return newlst
+        else:
+            #newlst = cons(car(lst),newlst)
+            tmp = newlst
+            newlst = lst
+            lst = cdr(lst)
+            newlst.cdr = tmp
+            
+def linkedlist(pylist):
     c = None
     for el in pylist[::-1]:
         c = cons(el,c)
